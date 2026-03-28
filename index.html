@@ -11,15 +11,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #050505;
-      --bg-card: #0F0F0F;
-      --bg-elevated: #181818;
+      --bg: #F8F6F1;
+      --bg-card: #EEEBE4;
+      --bg-elevated: #E5E1D8;
       --gold: #F5A800;
       --gold-light: #FFC233;
-      --gold-dim: rgba(245, 168, 0, 0.18);
-      --text: #FFFFFF;
-      --text-muted: #999999;
-      --border: rgba(245, 168, 0, 0.25);
+      --gold-dim: rgba(245, 168, 0, 0.15);
+      --text: #111111;
+      --text-muted: #666666;
+      --border: rgba(0, 0, 0, 0.1);
       --radius: 4px;
     }
 
@@ -136,15 +136,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(10, 10, 10, 0.92);
+      background: rgba(248, 246, 241, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       transition: background 0.3s ease;
     }
 
     .navbar.scrolled {
-      background: rgba(10, 10, 10, 0.98);
+      background: rgba(248, 246, 241, 0.99);
       border-bottom-color: var(--border);
     }
 
@@ -169,7 +169,7 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: #444444;
       transition: color 0.3s ease;
       position: relative;
     }
@@ -211,6 +211,8 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
+
+
     .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -221,7 +223,7 @@
       top: 72px;
       left: 0;
       right: 0;
-      background: rgba(10, 10, 10, 0.98);
+      background: rgba(248, 246, 241, 0.99);
       border-bottom: 1px solid var(--border);
       padding: 24px;
       z-index: 999;
@@ -261,14 +263,14 @@
       background-position: center 30%;
     }
 
-    /* Dark overlay over hero image */
+    /* Dark overlay over hero image — kept dark for text contrast */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.65) 55%, rgba(10,10,10,0.4) 100%),
-        linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 40%);
+        linear-gradient(90deg, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.6) 55%, rgba(10,10,10,0.3) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 40%);
     }
 
     .hero-pattern {
@@ -372,7 +374,7 @@
       position: relative;
       z-index: 1;
       background: var(--bg-card);
-      border-top: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
       padding: 0;
     }
 
@@ -523,7 +525,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
       margin-bottom: 56px;
-      background: var(--border);
+      background: rgba(0,0,0,0.08);
     }
 
     .service-card {
@@ -586,7 +588,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2px;
-      background: var(--border);
+      background: rgba(0,0,0,0.08);
     }
 
     .adv-card {
@@ -954,8 +956,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(rgba(20,20,20,0.8) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(20,20,20,0.8) 1px, transparent 1px);
+        linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
       background-size: 32px 32px;
     }
 
@@ -1102,10 +1104,11 @@
 
     /* Form */
     .booking-form {
-      background: var(--bg);
+      background: #FFFFFF;
       border: 1px solid var(--border);
       padding: 48px 44px;
       position: relative;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.08);
     }
 
     .booking-form::before {
@@ -1144,8 +1147,8 @@
     .form-input,
     .form-select,
     .form-textarea {
-      background: var(--bg-card);
-      border: 1px solid rgba(212, 168, 67, 0.2);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.15);
       color: var(--text);
       font-family: 'Montserrat', sans-serif;
       font-size: 0.88rem;
@@ -1165,7 +1168,7 @@
     .form-select:focus,
     .form-textarea:focus {
       border-color: var(--gold);
-      background: var(--bg-elevated);
+      background: #FFFFFF;
     }
 
     .form-input:focus-visible,
@@ -1194,7 +1197,7 @@
     }
 
     .form-select option {
-      background: var(--bg-card);
+      background: #FFFFFF;
       color: var(--text);
     }
 
