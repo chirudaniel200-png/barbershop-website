@@ -2651,8 +2651,8 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const nums = entry.target.querySelectorAll('.about-stat-num');
-          const targets = [10, 5000, 3];
-          const suffixes = ['+', '', ''];
+          const targets = [5, 200, 2];
+          const suffixes = ['+', '+', ''];
           nums.forEach((el, i) => animateCounter(el, targets[i], suffixes[i]));
           statsObserver.unobserve(entry.target);
         }
