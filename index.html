@@ -2811,6 +2811,10 @@
       const total = slides.length;
       let current = 0;
 
+      // Set track and slide widths dynamically
+      slidesEl.style.width = `${(total / visibleCount) * 100}%`;
+      Array.from(slides).forEach(s => s.style.minWidth = `${100 / total}%`);
+
       function getSteps() {
         return Math.ceil(total / visibleCount);
       }
