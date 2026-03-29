@@ -1489,6 +1489,60 @@
     }
 
     /* ── Scroll Progress Bar ── */
+    /* ── LOADING SCREEN ── */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #loader-logo {
+      width: 130px;
+      animation: loaderPulse 1.6s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(245,168,0,0.5));
+    }
+    #loader-bar-wrap {
+      width: 160px;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    #loader-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), #FFC233);
+      border-radius: 2px;
+      animation: loaderBar 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    #loader-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    @keyframes loaderPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.06); opacity: 0.85; }
+    }
+    @keyframes loaderBar {
+      0% { width: 0%; }
+      60% { width: 75%; }
+      100% { width: 100%; }
+    }
+
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -1693,6 +1747,15 @@
   </style>
 </head>
 <body>
+
+  <!-- ══ LOADING SCREEN ══ -->
+  <div id="loader" role="status" aria-label="Se încarcă...">
+    <img id="loader-logo" src="logo_clean.png" alt="Oaia Pierdută" />
+    <div id="loader-bar-wrap">
+      <div id="loader-bar"></div>
+    </div>
+    <span id="loader-text">Se încarcă</span>
+  </div>
 
   <!-- Custom cursor (desktop) -->
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -2640,6 +2703,12 @@
     // Add animation class via JS so elements are visible without JS
     const fadeEls = document.querySelectorAll('.fade-in');
     fadeEls.forEach(el => el.classList.add('will-fade'));
+
+    // ── Loading screen ──
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      setTimeout(() => loader.classList.add('hidden'), 600);
+    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
