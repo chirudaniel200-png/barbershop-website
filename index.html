@@ -938,28 +938,38 @@
       align-items: start;
     }
 
-    .map-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+    .map-container {
       position: relative;
+      border: 1px solid var(--border);
       overflow: hidden;
     }
 
-    .map-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
+    .map-container iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: none;
+      filter: grayscale(20%) contrast(1.05);
     }
+
+    .map-directions-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .map-directions-link:hover { background: var(--gold); color: #111; }
+    .map-directions-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
     .map-icon {
       position: relative;
@@ -2226,22 +2236,29 @@
       </div>
 
       <div class="contact-grid">
-        <div class="map-placeholder fade-in" role="img" aria-label="Hartă Google Maps placeholder">
-          <div class="map-icon" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 4C14.477 4 10 8.477 10 14c0 8.5 10 22 10 22s10-13.5 10-22c0-5.523-4.477-10-10-10z" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="20" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/>
+        <div class="map-container fade-in">
+          <iframe
+            src="https://maps.google.com/maps?q=Bulevardul+Granicerilor+2+Falticeni+Suceava+Romania&output=embed&hl=ro&z=16"
+            title="Locația frizerie — Fălticeni, Bulevardul Grănicerilor nr. 2"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Hartă Google Maps — locația frizerie">
+          </iframe>
+          <a href="https://maps.app.goo.gl/js31aBgjxWPhRc5TA" target="_blank" rel="noopener noreferrer" class="map-directions-link" aria-label="Deschide în Google Maps pentru direcții">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
             </svg>
-          </div>
-          <span class="map-text">Hartă Google Maps</span>
+            Deschide în Google Maps — Obține direcții
+          </a>
         </div>
 
         <div class="contact-info fade-in fade-in-delay-1">
           <div>
             <p class="contact-block-label">Adresă</p>
             <p class="contact-block-value">
-              Str. Exemplu nr. 1<br>
-              Orașul Dvs., Județul, România
+              Bulevardul Grănicerilor nr. 2, bl. 20, parter, sp. 5<br>
+              Fălticeni, județul Suceava
             </p>
           </div>
           <div>
