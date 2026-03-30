@@ -261,11 +261,10 @@
 
     .hero-bg {
       position: absolute;
-      inset: -30% 0;
+      inset: 0;
       background-image: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
-      background-position: center center;
-      will-change: transform;
+      background-position: center 30%;
     }
 
     /* Dark overlay over hero image — kept dark for text contrast */
@@ -3009,51 +3008,5 @@
     }
   </script>
 
-  <!-- ══ GSAP + ScrollTrigger + Lenis ══ -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script>
-    // ── Lenis smooth scroll ──
-    const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-
-    // ── Parallax Hero ──
-    gsap.registerPlugin(ScrollTrigger);
-
-    const heroBg = document.querySelector('.hero-bg');
-    const heroContent = document.querySelector('.hero-content');
-
-    if (heroBg) {
-      // Background moves slower than scroll — classic parallax depth
-      gsap.to(heroBg, {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero',
-          start: '0% 0%',
-          end: '100% 0%',
-          scrub: 0
-        }
-      });
-    }
-
-    if (heroContent) {
-      // Text drifts up slightly faster — adds depth between layers
-      gsap.to(heroContent, {
-        yPercent: -15,
-        opacity: 0.3,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero',
-          start: '0% 0%',
-          end: '60% 0%',
-          scrub: 0
-        }
-      });
-    }
-  </script>
 </body>
 </html>
